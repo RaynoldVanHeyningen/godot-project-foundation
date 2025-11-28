@@ -1,0 +1,1553 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../21-chapter-21/">
+      
+      
+        <link rel="next" href="../23-chapter-23/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Chapter 22 - The AAA Blueprint: Godot Project Foundation for Scalability & Modding</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="sky" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-22-automated-testing-with-godots-gdunit" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="The AAA Blueprint: Godot Project Foundation for Scalability &amp; Modding" class="md-header__button md-logo" aria-label="The AAA Blueprint: Godot Project Foundation for Scalability & Modding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The AAA Blueprint: Godot Project Foundation for Scalability & Modding
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 22
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="The AAA Blueprint: Godot Project Foundation for Scalability &amp; Modding" class="md-nav__button md-logo" aria-label="The AAA Blueprint: Godot Project Foundation for Scalability & Modding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    The AAA Blueprint: Godot Project Foundation for Scalability & Modding
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-chapter-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-chapter-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-chapter-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-chapter-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-chapter-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-chapter-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-chapter-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-chapter-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-chapter-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-chapter-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-chapter-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-chapter-12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-chapter-13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-chapter-14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-chapter-15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-chapter-16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-chapter-17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-chapter-18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 18
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-chapter-19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 19
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-chapter-20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 20
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-chapter-21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 21
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 22
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 22
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-explanation-automated-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Explanation: Automated Testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept Explanation: Automated Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-automated-testing-is-crucial-for-aaa-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Automated Testing is Crucial for AAA Projects:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-automated-tests-focus-unit-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of Automated Tests (Focus: Unit Tests):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gdunit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GDUnit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectural-reasoning-testable-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architectural Reasoning: Testable Components
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-mindset-notes-integrating-testing-into-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production Mindset Notes: Integrating Testing into Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-instructions-setting-up-gdunit-and-writing-unit-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step-by-Step Instructions: Setting Up GDUnit and Writing Unit Tests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Instructions: Setting Up GDUnit and Writing Unit Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-install-gdunit-addon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Install GDUnit Addon
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-a-test-folder-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Create a Test Folder Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-write-a-unit-test-for-healthcomponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Write a Unit Test for HealthComponent
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-chapter-23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 23
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-explanation-automated-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Explanation: Automated Testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept Explanation: Automated Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-automated-testing-is-crucial-for-aaa-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Automated Testing is Crucial for AAA Projects:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-automated-tests-focus-unit-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of Automated Tests (Focus: Unit Tests):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gdunit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GDUnit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectural-reasoning-testable-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architectural Reasoning: Testable Components
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-mindset-notes-integrating-testing-into-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production Mindset Notes: Integrating Testing into Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-instructions-setting-up-gdunit-and-writing-unit-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step-by-Step Instructions: Setting Up GDUnit and Writing Unit Tests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Instructions: Setting Up GDUnit and Writing Unit Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-install-gdunit-addon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Install GDUnit Addon
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-a-test-folder-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Create a Test Folder Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-write-a-unit-test-for-healthcomponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Write a Unit Test for HealthComponent
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-22-automated-testing-with-godots-gdunit">Chapter 22: Automated Testing with Godot's GDUnit</h1>
+<h2 id="goal">Goal</h2>
+<p>The goal of this chapter is to introduce the concept of <strong>automated testing</strong> and integrate <strong>GDUnit</strong> (a popular testing framework for Godot) into our project. We will learn how to set up GDUnit, write basic unit tests for our scripts (e.g., <code>HealthComponent</code>, <code>DataManager</code>), and understand how automated testing contributes to code quality, prevents regressions, and supports long-term maintainability in a professional game development environment.</p>
+<h2 id="concept-explanation-automated-testing">Concept Explanation: Automated Testing</h2>
+<p>Automated testing is the practice of writing code to verify that other parts of your code work as expected. Instead of manually checking every feature after every change, you run a suite of tests that automatically perform these checks.</p>
+<h3 id="why-automated-testing-is-crucial-for-aaa-projects">Why Automated Testing is Crucial for AAA Projects:</h3>
+<ul>
+<li><strong>Prevent Regressions</strong>: Ensures that new changes or bug fixes don't unintentionally break existing functionality. This is vital in large, complex projects where one change can have ripple effects.</li>
+<li><strong>Improve Code Quality</strong>: Writing tests forces you to think about code design, leading to more modular, testable, and robust code.</li>
+<li><strong>Faster Iteration</strong>: Developers can make changes with more confidence, knowing that the tests will catch errors early.</li>
+<li><strong>Documentation</strong>: Tests serve as living documentation, demonstrating how code is intended to be used.</li>
+<li><strong>Team Collaboration</strong>: Essential for teams, as tests ensure everyone adheres to expected behavior and catches integration issues.</li>
+<li><strong>Refactoring Confidence</strong>: You can refactor large sections of code, trusting the tests to tell you if you broke anything.</li>
+</ul>
+<h3 id="types-of-automated-tests-focus-unit-tests">Types of Automated Tests (Focus: Unit Tests):</h3>
+<ul>
+<li><strong>Unit Tests</strong>: Test the smallest isolatable parts of your code (e.g., a single function, a single class/script). They run very fast.</li>
+<li><strong>Integration Tests</strong>: Test how different units or systems interact with each other (e.g., <code>PlayerController</code> interacting with <code>MovementComponent</code>).</li>
+<li><strong>End-to-End Tests</strong>: Test the entire application flow from a user's perspective (e.g., "Player starts game, completes level, sees score").</li>
+</ul>
+<p>For this chapter, we will focus on <strong>Unit Tests</strong> using <strong>GDUnit</strong>.</p>
+<h3 id="gdunit">GDUnit</h3>
+<p>GDUnit is a community-driven, open-source testing framework specifically designed for Godot Engine and GDScript. It provides:</p>
+<ul>
+<li><strong>Test Runner</strong>: An integrated tool within Godot to discover and run tests.</li>
+<li><strong>Assertions</strong>: Functions to assert expected outcomes (e.g., <code>assert_eq(a, b)</code> for equality, <code>assert_true(condition)</code>).</li>
+<li><strong>Test Fixtures</strong>: Setup/teardown methods (<code>_init()</code>, <code>_end()</code>) for tests.</li>
+<li><strong>Mocking/Stubbing</strong>: (Advanced) Tools to isolate components by faking dependencies.</li>
+</ul>
+<h2 id="architectural-reasoning-testable-components">Architectural Reasoning: Testable Components</h2>
+<p>Our compositional architecture naturally lends itself to testability:</p>
+<ul>
+<li><strong>Single Responsibility Principle</strong>: Components that do one thing well are easy to test in isolation.</li>
+<li><strong>Loose Coupling (Signals)</strong>: Components communicate via signals, meaning you can test a component's output signals without needing a full UI or game world.</li>
+<li><strong>Data-Driven Design</strong>: Components read data from resources, so you can easily provide different data resources to tests to cover various scenarios.</li>
+<li><strong>Service Locator</strong>: Allows you to swap out real services for "mock" services during testing, further isolating components.</li>
+</ul>
+<h2 id="production-mindset-notes-integrating-testing-into-workflow">Production Mindset Notes: Integrating Testing into Workflow</h2>
+<ul>
+<li><strong>Test-Driven Development (TDD)</strong>: (Optional, but powerful) Write tests <em>before</em> writing the code.</li>
+<li><strong>Run Tests Regularly</strong>: Integrate tests into your continuous integration (CI) pipeline or run them frequently during development.</li>
+<li><strong>Meaningful Test Names</strong>: Name your test functions descriptively (e.g., <code>test_health_component_takes_damage_correctly</code>).</li>
+<li><strong>Edge Cases</strong>: Don't just test the "happy path." Test edge cases (e.g., damage amount is zero, negative health, healing past max health, trying to damage a dead entity).</li>
+</ul>
+<h2 id="step-by-step-instructions-setting-up-gdunit-and-writing-unit-tests">Step-by-Step Instructions: Setting Up GDUnit and Writing Unit Tests</h2>
+<h3 id="1-install-gdunit-addon">1. Install GDUnit Addon</h3>
+<p>GDUnit is an addon that you install into your Godot project.</p>
+<ol>
+<li><strong>Download GDUnit</strong>:<ul>
+<li>Go to the GDUnit GitHub releases page: <a href="https://github.com/MikeSchulze/gdUnit4/releases">https://github.com/MikeSchulze/gdUnit4/releases</a></li>
+<li>Download the latest <code>gdunit4.zip</code> file.</li>
+</ul>
+</li>
+<li><strong>Install into Project</strong>:<ul>
+<li>Unzip the downloaded <code>gdunit4.zip</code> file.</li>
+<li>Copy the <code>addons/gdUnit4</code> folder from the unzipped archive into your project's <code>res://addons/</code> folder.</li>
+<li>Your <code>res://addons/</code> folder should now contain <code>gdUnit4/</code>.</li>
+</ul>
+</li>
+<li><strong>Enable Addon in Godot</strong>:<ul>
+<li>Open your project in Godot.</li>
+<li>Go to <code>Project</code> -&gt; <code>Project Settings...</code>.</li>
+<li>Select the "Plugins" tab.</li>
+<li>You should see "GdUnit4". Change its "Status" to "Enable".</li>
+<li>Close Project Settings.</li>
+<li>You should now see a new "GdUnit4" tab appear in the bottom panel of the editor.</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-create-a-test-folder-structure">2. Create a Test Folder Structure</h3>
+<p>It's good practice to keep tests separate from your main game code.</p>
+<ol>
+<li>In <code>res://</code>, create a new folder named <code>tests/</code>.</li>
+<li>Inside <code>tests/</code>, create subfolders mirroring your <code>scripts/</code> structure, e.g., <code>tests/components/</code>.</li>
+</ol>
+<h3 id="3-write-a-unit-test-for-healthcomponent">3. Write a Unit Test for <code>HealthComponent</code></h3>
+<p>Let's write a test that verifies our <code>HealthComponent</code> takes damage, heals, and emits signals correctly.</p>
+<ol>
+<li>In <code>res://tests/components/</code>, create a new script named <code>TestHealthComponent.gd</code>.</li>
+<li>
+<p>Add the following code:</p>
+<p>```gdscript</p>
+<h1 id="testhealthcomponentgd">TestHealthComponent.gd</h1>
+<p>extends GdUnit4.GdUnitTestSuite</p>
+<h1 id="preload-the-healthcomponent-script-and-a-dummy-healthdata-for-testing">Preload the HealthComponent script and a dummy HealthData for testing</h1>
+<p>const HEALTH_COMPONENT_SCRIPT = preload("res://scripts/components/HealthComponent.gd")
+const HEALTH_DATA_SCRIPT = preload("res://scripts/data_types/HealthData.gd")</p>
+<p>var _test_health_data: HealthData = null
+var _health_component: HealthComponent = null
+var _test_owner_entity: Entity = null # Dummy entity to satisfy owner requirements</p>
+<h1 id="test-setup-runs-before-each-test-method">Test Setup: Runs before each test method</h1>
+<p>func _init():
+    # Create a dummy HealthData resource for testing
+    _test_health_data = HEALTH_DATA_SCRIPT.new()
+    _test_health_data.max_health = 100
+    _test_health_data.invulnerability_duration = 0.5</p>
+<pre><code># Create a dummy Entity to act as the owner
+_test_owner_entity = Entity.new()
+_test_owner_entity.entity_id = "TestEntity"
+_test_owner_entity.name = "TestEntity" # Ensure name is set for logging
+# We don't need to add it to the scene tree for isolated component testing
+
+# Create the HealthComponent instance
+_health_component = HEALTH_COMPONENT_SCRIPT.new()
+_health_component.name = "HealthComponent" # Set name for consistency
+_health_component.health_data = _test_health_data # Assign the dummy data
+_test_owner_entity.add_child(_health_component) # Add as child to simulate scene tree
+
+# Manually call _on_entity_ready since it's not in a real scene tree
+_health_component._on_entity_ready()
+
+# Connect signals for verification
+_health_component.health_changed.connect(func(current, max): print("Test: Health changed to %s/%s" % [current, max]))
+_health_component.died.connect(func(): print("Test: Died signal received"))
+</code></pre>
+<h1 id="test-teardown-runs-after-each-test-method">Test Teardown: Runs after each test method</h1>
+<p>func _end():
+    if is_instance_valid(_health_component):
+        _health_component.queue_free()
+        _health_component = null
+    if is_instance_valid(_test_health_data):
+        _test_health_data.free()
+        _test_health_data = null
+    if is_instance_valid(_test_owner_entity):
+        _test_owner_entity.queue_free()
+        _test_owner_entity = null</p>
+<h1 id="-test-methods-">--- Test Methods ---</h1>
+<h1 id="test-initial-health-setup">Test initial health setup</h1>
+<p>func test_initial_health():
+    assert_eq(100, _health_component.get_health()).msg("Initial health should be max_health")
+    assert_eq(100, _health_component.get_max_health()).msg("Max health should be from data")
+    # You can't directly assert a signal was emitted this way without a mock framework
+    # But we can verify side effects.</p>
+<h1 id="test-taking-damage">Test taking damage</h1>
+<p>func test_take_damage():
+    _health_component.take_damage(10)
+    assert_eq(90, _health_component.get_health()).msg("Health should decrease by 10")
+    assert_true(_health_component._is_invulnerable).msg("Should be invulnerable after damage")</p>
+<h1 id="test-healing">Test healing</h1>
+<p>func test_heal():
+    _health_component.take_damage(50)
+    _health_component.heal(20)
+    assert_eq(70, _health_component.get_health()).msg("Health should increase by 20")</p>
+<h1 id="test-health-cannot-go-below-zero">Test health cannot go below zero</h1>
+<p>func test_health_cannot_go_below_zero():
+    _health_component.take_damage(150) # More damage than max health
+    assert_eq(0, _health_component.get_health()).msg("Health should not go below zero")</p>
+<h1 id="test-healing-cannot-exceed-max-health">Test healing cannot exceed max health</h1>
+<p>func test_heal_cannot_exceed_max_health():
+    _health_component.take_damage(10)
+    _health_component.heal(200) # More healing than needed
+    assert_eq(100, _health_component.get_health()).msg("Health should not exceed max health")</p>
+<h1 id="test-died-signal-emission">Test died signal emission</h1>
+<p>func test_died_signal_emitted():
+    var died_emitted_count = 0
+    _health_component.died.connect(func(): died_emitted_count += 1)</p>
+<pre><code>_health_component.take_damage(90) # Health now 10
+_health_component.take_damage(10) # Health now 0, should die
+
+assert_eq(0, _health_component.get_health()).msg("Health should be 0 after lethal damage")
+assert_eq(1, died_emitted_count).msg("Died signal should be emitted exactly once")
+assert_false(_health_component.is_instance_valid()).msg("Component should be freed after death") # No, component is not freed by itself
+assert_false(_health_component.is_processing()).msg("Component should stop processing after death") # No, not by itself
+
+# Correction: HealthComponent doesn't free itself or stop processing. 
+# The PlayerController handles reactions to 'died' signal.
+# So we remove the last two assertions.
+# The component itself should still be valid, just its internal state is 'dead'.
+
+# Re-verify: Died signal should NOT be emitted again if already dead
+_health_component.take_damage(10) 
+assert_eq(1, died_emitted_count).msg("Died signal should not be re-emitted if already dead")
+</code></pre>
+<h1 id="test-invulnerability">Test invulnerability</h1>
+<p>func test_invulnerability():
+    _health_component.take_damage(10) # Health 90, invulnerable
+    assert_true(_health_component._is_invulnerable).msg("Should be invulnerable after first hit")
+    _health_component.take_damage(10) # Should not take damage while invulnerable
+    assert_eq(90, _health_component.get_health()).msg("Health should remain 90 due to invulnerability")</p>
+<pre><code># Advance time to simulate invulnerability duration passing
+# This requires mocking Godot's Timer or using GdUnit's scene runner
+# For a simple unit test, we can manually trigger the timeout or skip time.
+# Let's manually trigger for now.
+_health_component._invulnerability_timer.emit_signal("timeout")
+assert_false(_health_component._is_invulnerable).msg("Should not be invulnerable after timer timeout")
+
+_health_component.take_damage(10) # Should take damage now
+assert_eq(80, _health_component.get_health()).msg("Health should decrease after invulnerability ends")
+</code></pre>
+<p>```</p>
+<ul>
+<li><strong><code>extends GdUnit4.GdUnitTestSuite</code></strong>: All GDUnit test scripts must extend this.</li>
+<li><strong><code>_init()</code></strong>: This is the setup method that runs <em>before each test</em>. We instance our <code>HealthData</code>, <code>Entity</code>, and <code>HealthComponent</code> here. We also manually call <code>_on_entity_ready()</code> because we're not running it in a full scene.</li>
+<li><strong><code>_end()</code></strong>: This is the teardown method that runs <em>after each test</em>. It's critical to free any instanced nodes/resources to prevent memory leaks and ensure tests are isolated.</li>
+<li><strong><code>test_initial_health()</code></strong>: An example test method. Test methods must start with <code>test_</code>.</li>
+<li><strong><code>assert_eq()</code> / <code>assert_true()</code></strong>: GDUnit assertion methods to check conditions.</li>
+<li><strong>Signal connection in <code>_init()</code></strong>: We connect to signals to verify they are emitted, by incrementing a counter.</li>
+<li><strong>Invulnerability Test</strong>: Demonstrates how to manually trigger a <code>Timer</code>'s <code>timeout</code> signal for testing.</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-run-the-tests">4. Run the Tests</h3>
+<ol>
+<li>In the Godot editor, open the "GdUnit4" tab at the bottom.</li>
+<li>In the "Test Suites" panel (left side), you should see <code>TestHealthComponent.gd</code>.</li>
+<li>Click the "Run All" button (the green play button at the top of the GdUnit4 panel) or select <code>TestHealthComponent.gd</code> and click "Run Selected".</li>
+<li><strong>Observe Results</strong>:<ul>
+<li>The "Output" panel will show the results, indicating which tests passed or failed.</li>
+<li>The GdUnit4 panel will show a green checkmark for passing tests and a red 'X' for failures, with details.</li>
+<li>If any test fails, read the error message carefully. It will tell you which assertion failed and why.</li>
+<li><strong>Important</strong>: You might get some <code>push_error</code> or <code>push_warning</code> messages from your <code>Logger</code> during tests. This is normal because the test environment is not a full game context. GDUnit provides ways to suppress these if needed.</li>
+</ul>
+</li>
+</ol>
+<h3 id="5-write-a-unit-test-for-datamanager-optional-but-recommended">5. Write a Unit Test for <code>DataManager</code> (Optional, but Recommended)</h3>
+<p>For <code>DataManager</code>, you'd test:</p>
+<ul>
+<li>Loading default items correctly.</li>
+<li>Mod items overriding default items.</li>
+<li>Retrieving a specific item by ID.</li>
+<li>Handling missing item IDs.</li>
+<li>Parsing malformed JSON.</li>
+</ul>
+<pre><code class="language-gdscript"># tests/managers/TestDataManager.gd (Conceptual)
+extends GdUnit4.GdUnitTestSuite
+
+const DATA_MANAGER_SCRIPT = preload(&quot;res://scripts/managers/DataManager.gd&quot;)
+const ITEM_DATA_SCRIPT = preload(&quot;res://scripts/data_types/ItemData.gd&quot;)
+
+var _data_manager: DataManager = null
+var _temp_user_dir: String = &quot;user://test_mod_data/&quot;
+
+func _init():
+    # Setup a dummy user://mods folder for testing
+    DirAccess.make_dir_recursive_absolute(_temp_user_dir + &quot;my_test_mod/data/&quot;)
+    var file = FileAccess.open(_temp_user_dir + &quot;my_test_mod/data/items.json&quot;, FileAccess.WRITE)
+    if file:
+        file.store_string(&quot;&quot;&quot;
+        [
+            {
+                &quot;id&quot;: &quot;mod_item_test&quot;,
+                &quot;item_name&quot;: &quot;Modded Test Item&quot;,
+                &quot;description&quot;: &quot;A modded item for testing.&quot;,
+                &quot;item_type&quot;: &quot;GENERIC&quot;,
+                &quot;icon_texture_path&quot;: &quot;&quot;,
+                &quot;stackable&quot;: false,
+                &quot;max_stack_size&quot;: 1,
+                &quot;weight&quot;: 0.0,
+                &quot;value&quot;: 1
+            }
+        ]
+        &quot;&quot;&quot;)
+        file.close()
+
+    _data_manager = DATA_MANAGER_SCRIPT.new()
+    _data_manager.log_file_path = &quot;user://test_data_manager.log&quot; # Use a separate log file for tests
+    _data_manager.current_log_level = Logger.LogLevel.ERROR # Suppress info logs during tests
+    _data_manager._load_all_game_data() # Manually trigger loading for testing
+
+func _end():
+    if is_instance_valid(_data_manager):
+        _data_manager.queue_free()
+        _data_manager = null
+    # Clean up dummy mod directory
+    DirAccess.remove_absolute(_temp_user_dir + &quot;my_test_mod/data/items.json&quot;)
+    DirAccess.remove_absolute(_temp_user_dir + &quot;my_test_mod/data/&quot;)
+    DirAccess.remove_absolute(_temp_user_dir + &quot;my_test_mod/&quot;)
+    DirAccess.remove_absolute(_temp_user_dir)
+
+func test_load_default_item():
+    var item = _data_manager.get_item_data(&quot;potion_health_small&quot;)
+    assert_not_null(item).msg(&quot;Should load default health potion&quot;)
+    assert_eq(&quot;Small Health Potion&quot;, item.item_name).msg(&quot;Default item name should be correct&quot;)
+
+func test_mod_item_override():
+    var item = _data_manager.get_item_data(&quot;potion_health_small&quot;) # From previous mod in Chapter 17
+    if item:
+        assert_eq(&quot;Modded Small Health Potion&quot;, item.item_name).msg(&quot;Modded item should override default&quot;)
+    else:
+        fail(&quot;Potion_health_small not found, expected modded version.&quot;)
+
+func test_load_mod_specific_item():
+    var item = _data_manager.get_item_data(&quot;mod_item_test&quot;)
+    assert_not_null(item).msg(&quot;Should load mod-specific item&quot;)
+    assert_eq(&quot;Modded Test Item&quot;, item.item_name).msg(&quot;Mod-specific item name should be correct&quot;)
+
+func test_missing_item_returns_null():
+    var item = _data_manager.get_item_data(&quot;non_existent_item&quot;)
+    assert_null(item).msg(&quot;Should return null for non-existent item&quot;)
+</code></pre>
+<h2 id="consistency-check">Consistency Check</h2>
+<p>You have successfully set up GDUnit in your Godot project and written a foundational unit test for the <code>HealthComponent</code>. This demonstrates how to verify the behavior of individual components in isolation, preventing regressions and improving code quality. Integrating automated testing into your workflow is a hallmark of professional game development, ensuring your AAA foundation remains robust and reliable as your project evolves.</p>
+<p>In the next chapter, we will cover the final steps of preparing your AAA foundation for distribution: exporting your Godot project.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "content.code.copy"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

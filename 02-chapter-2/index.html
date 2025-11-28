@@ -1,0 +1,1239 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../01-chapter-1/">
+      
+      
+        <link rel="next" href="../03-chapter-3/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Chapter 2 - The AAA Blueprint: Godot Project Foundation for Scalability & Modding</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="sky" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-2-setting-up-a-professional-godot-project-structure" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="The AAA Blueprint: Godot Project Foundation for Scalability &amp; Modding" class="md-header__button md-logo" aria-label="The AAA Blueprint: Godot Project Foundation for Scalability & Modding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The AAA Blueprint: Godot Project Foundation for Scalability & Modding
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="The AAA Blueprint: Godot Project Foundation for Scalability &amp; Modding" class="md-nav__button md-logo" aria-label="The AAA Blueprint: Godot Project Foundation for Scalability & Modding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    The AAA Blueprint: Godot Project Foundation for Scalability & Modding
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-chapter-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-explanation-standardized-folder-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Explanation: Standardized Folder Hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectural-reasoning-separation-of-concerns-at-the-file-system-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architectural Reasoning: Separation of Concerns at the File System Level
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-mindset-notes-naming-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production Mindset Notes: Naming Conventions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-instructions-creating-the-project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step-by-Step Instructions: Creating the Project Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consistency-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consistency Check
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-chapter-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-chapter-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-chapter-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-chapter-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-chapter-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-chapter-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-chapter-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-chapter-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-chapter-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-chapter-12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-chapter-13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-chapter-14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-chapter-15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-chapter-16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-chapter-17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-chapter-18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 18
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-chapter-19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 19
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-chapter-20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 20
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-chapter-21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 21
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-chapter-22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 22
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-chapter-23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 23
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-explanation-standardized-folder-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Explanation: Standardized Folder Hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectural-reasoning-separation-of-concerns-at-the-file-system-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architectural Reasoning: Separation of Concerns at the File System Level
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-mindset-notes-naming-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production Mindset Notes: Naming Conventions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-instructions-creating-the-project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step-by-Step Instructions: Creating the Project Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consistency-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consistency Check
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-2-setting-up-a-professional-godot-project-structure">Chapter 2: Setting Up a Professional Godot Project Structure</h1>
+<h2 id="goal">Goal</h2>
+<p>The goal of this chapter is to establish a clear, organized, and standardized file and folder structure within your Godot project. This foundation is critical for project clarity, maintainability, scalability, and efficient collaboration, aligning directly with our AAA mindset. A well-organized project makes it easier for you (and any future teammates or modders) to find assets, scripts, and scenes, reducing cognitive load and preventing errors.</p>
+<h2 id="concept-explanation-standardized-folder-hierarchy">Concept Explanation: Standardized Folder Hierarchy</h2>
+<p>Imagine walking into a new office where every desk, file cabinet, and supply closet is meticulously labeled and organized. You'd quickly find what you need. A game project is no different. A standardized folder hierarchy acts as a map, guiding developers to the correct location for every asset, script, and scene.</p>
+<p>This approach is crucial because:</p>
+<ul>
+<li><strong>Discoverability</strong>: New team members (or your future self) can quickly understand where everything lives.</li>
+<li><strong>Consistency</strong>: Reduces confusion and errors when multiple people work on the same project.</li>
+<li><strong>Maintainability</strong>: Updates and refactors are easier when you know exactly where relevant files are located.</li>
+<li><strong>Scalability</strong>: As your project grows, a strong structure prevents it from becoming a "wild west" of files.</li>
+<li><strong>Moddability</strong>: Modders will have an easier time understanding your project's layout, making it simpler for them to integrate their content.</li>
+</ul>
+<p>Our proposed structure is designed to separate concerns at the highest level, grouping similar types of assets and logic together.</p>
+<h2 id="architectural-reasoning-separation-of-concerns-at-the-file-system-level">Architectural Reasoning: Separation of Concerns at the File System Level</h2>
+<p>At its core, a good folder structure is about applying the "separation of concerns" principle to your file system. Different types of files have different responsibilities:</p>
+<ul>
+<li><strong><code>assets/</code></strong>: Raw art, audio, and effect files. Their concern is purely content.</li>
+<li><strong><code>scenes/</code></strong>: Compositions of nodes into reusable game objects or levels. Their concern is scene graph organization.</li>
+<li><strong><code>scripts/</code></strong>: GDScript files defining logic and behavior. Their concern is code.</li>
+<li><strong><code>data/</code></strong>: Godot Resources or external configuration files. Their concern is configuration.</li>
+</ul>
+<p>By separating these concerns into distinct top-level folders, we ensure that changes in one area (e.g., updating an art asset) are less likely to accidentally affect another (e.g., a core script), and vice-versa.</p>
+<h2 id="production-mindset-notes-naming-conventions">Production Mindset Notes: Naming Conventions</h2>
+<p>Beyond folder structure, consistent naming conventions are vital for a professional project. They provide immediate context about a file's purpose and type. While Godot doesn't enforce strict rules, these are widely adopted best practices:</p>
+<ul>
+<li><strong>Scenes (<code>.tscn</code>)</strong>: <code>Player.tscn</code>, <code>Level01.tscn</code>, <code>MainMenu.tscn</code>. Use PascalCase (or CamelCase) for scene names.</li>
+<li><strong>Scripts (<code>.gd</code>)</strong>: <code>PlayerController.gd</code>, <code>HealthComponent.gd</code>, <code>GameManager.gd</code>. Use PascalCase for class names and filenames.</li>
+<li><strong>Resources (<code>.tres</code>, <code>.res</code>)</strong>: <code>PlayerStats.tres</code>, <code>EnemyAIConfig.tres</code>, <code>ItemData.tres</code>. Use PascalCase.</li>
+<li><strong>Images (<code>.png</code>, <code>.jpg</code>)</strong>: <code>player_idle.png</code>, <code>button_hover.png</code>. Use snake_case or kebab-case.</li>
+<li><strong>Audio (<code>.ogg</code>, <code>.wav</code>)</strong>: <code>music_main_theme.ogg</code>, <code>sfx_gun_shot.wav</code>. Use snake_case, often with a <code>music_</code> or <code>sfx_</code> prefix.</li>
+</ul>
+<p>Consistency is key. Choose a convention and stick to it.</p>
+<h2 id="step-by-step-instructions-creating-the-project-structure">Step-by-Step Instructions: Creating the Project Structure</h2>
+<p>Let's create a new Godot project and set up our foundational folder structure.</p>
+<ol>
+<li><strong>Open Godot Engine</strong>: Launch Godot Engine 4.5.</li>
+<li><strong>Create a New Project</strong>:<ul>
+<li>Click "New Project".</li>
+<li>For "Project Name", enter <code>AAA_Blueprint_Course</code>.</li>
+<li>Choose a suitable "Project Path" on your system.</li>
+<li>Ensure "Renderer" is set to "Forward+" (or "Mobile" if targeting mobile, but Forward+ is a good default for general learning).</li>
+<li>Click "Create &amp; Edit".</li>
+</ul>
+</li>
+<li><strong>Create Core Folders</strong>:<ul>
+<li>In the Godot editor, locate the "FileSystem" dock (usually on the bottom-left).</li>
+<li>Right-click on <code>res://</code> (the root of your project).</li>
+<li>Select "New Folder...".</li>
+<li>Create the following folders, one by one, by typing the name and pressing Enter:<ul>
+<li><code>addons</code> (for third-party Godot plugins/modules)</li>
+<li><code>assets</code> (raw art, audio, fonts, shaders, particles, etc.)<ul>
+<li>Inside <code>assets</code>, create subfolders: <code>audio</code>, <code>fonts</code>, <code>graphics</code>, <code>materials</code>, <code>particles</code>, <code>shaders</code></li>
+</ul>
+</li>
+<li><code>data</code> (Godot Resources, JSON, CSV, configuration files)<ul>
+<li>Inside <code>data</code>, create subfolders: <code>configs</code>, <code>game_data</code></li>
+</ul>
+</li>
+<li><code>scenes</code> (all game scenes: levels, UI, reusable prefabs)<ul>
+<li>Inside <code>scenes</code>, create subfolders: <code>entities</code>, <code>levels</code>, <code>ui</code></li>
+</ul>
+</li>
+<li><code>scripts</code> (all GDScript files)<ul>
+<li>Inside <code>scripts</code>, create subfolders: <code>components</code>, <code>core</code>, <code>managers</code>, <code>systems</code>, <code>utils</code></li>
+</ul>
+</li>
+<li><code>temp</code> (for temporary files, scratchpad scenes, or experimental assets)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>Your <code>FileSystem</code> dock should now look something like this (collapsed for brevity):</p>
+<pre><code>res://
+├── addons/
+├── assets/
+│   ├── audio/
+│   ├── fonts/
+│   ├── graphics/
+│   ├── materials/
+│   ├── particles/
+│   └── shaders/
+├── data/
+│   ├── configs/
+│   └── game_data/
+├── scenes/
+│   ├── entities/
+│   ├── levels/
+│   └── ui/
+├── scripts/
+│   ├── components/
+│   ├── core/
+│   ├── managers/
+│   ├── systems/
+│   └── utils/
+└── temp/
+</code></pre>
+<ol>
+<li><strong>Create a Main Scene Placeholder</strong>:<ul>
+<li>Right-click on the <code>scenes/levels</code> folder.</li>
+<li>Select "New Scene".</li>
+<li>Choose "2D Scene" or "3D Scene" depending on your preference (for this course, 2D will be sufficient for most examples, but the principles apply to both). Let's go with "2D Scene".</li>
+<li>Rename the root node to <code>Main</code>.</li>
+<li>Save the scene as <code>Main.tscn</code> inside <code>res://scenes/levels/</code>.</li>
+<li>Go to Project -&gt; Project Settings -&gt; Application -&gt; Run.</li>
+<li>Click the folder icon next to "Main Scene" and select <code>res://scenes/levels/Main.tscn</code>. This sets our main entry point for the game.</li>
+</ul>
+</li>
+</ol>
+<h2 id="consistency-check">Consistency Check</h2>
+<p>At this point, you have a clean, logical project structure that provides a home for every type of file we'll create. This structure will serve as our backbone throughout the course, ensuring that as we add more complex systems and assets, our project remains organized and manageable.</p>
+<p>In the next chapter, we'll integrate Git for version control, a crucial step for any professional project, especially when working in a team.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "content.code.copy"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

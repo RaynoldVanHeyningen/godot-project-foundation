@@ -1,0 +1,1413 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../22-chapter-22/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Chapter 23 - The AAA Blueprint: Godot Project Foundation for Scalability & Modding</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="sky" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-23-exporting-your-aaa-foundation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="The AAA Blueprint: Godot Project Foundation for Scalability &amp; Modding" class="md-header__button md-logo" aria-label="The AAA Blueprint: Godot Project Foundation for Scalability & Modding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The AAA Blueprint: Godot Project Foundation for Scalability & Modding
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 23
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="The AAA Blueprint: Godot Project Foundation for Scalability &amp; Modding" class="md-nav__button md-logo" aria-label="The AAA Blueprint: Godot Project Foundation for Scalability & Modding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    The AAA Blueprint: Godot Project Foundation for Scalability & Modding
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-chapter-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-chapter-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-chapter-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-chapter-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-chapter-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-chapter-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-chapter-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-chapter-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-chapter-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-chapter-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-chapter-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-chapter-12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-chapter-13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-chapter-14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-chapter-15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-chapter-16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-chapter-17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-chapter-18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 18
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-chapter-19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 19
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-chapter-20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 20
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-chapter-21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 21
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-chapter-22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 22
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 23
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 23
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-explanation-exporting-a-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Explanation: Exporting a Game
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept Explanation: Exporting a Game">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-exporting-is-more-than-just-copying-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Exporting is More Than Just "Copying Files":
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectural-reasoning-production-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architectural Reasoning: Production Builds
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-mindset-notes-release-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production Mindset Notes: Release Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-instructions-configuring-and-exporting-your-godot-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step-by-Step Instructions: Configuring and Exporting Your Godot Project
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Instructions: Configuring and Exporting Your Godot Project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-download-export-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Download Export Templates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configure-export-presets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configure Export Presets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configure-logger-for-exported-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Configure Logger for Exported Builds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-perform-the-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Perform the Export
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-test-the-exported-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Test the Exported Game
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consistency-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consistency Check
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-explanation-exporting-a-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Explanation: Exporting a Game
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept Explanation: Exporting a Game">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-exporting-is-more-than-just-copying-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Exporting is More Than Just "Copying Files":
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectural-reasoning-production-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architectural Reasoning: Production Builds
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-mindset-notes-release-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production Mindset Notes: Release Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-instructions-configuring-and-exporting-your-godot-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step-by-Step Instructions: Configuring and Exporting Your Godot Project
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Instructions: Configuring and Exporting Your Godot Project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-download-export-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Download Export Templates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configure-export-presets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configure Export Presets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configure-logger-for-exported-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Configure Logger for Exported Builds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-perform-the-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Perform the Export
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-test-the-exported-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Test the Exported Game
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consistency-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consistency Check
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-23-exporting-your-aaa-foundation">Chapter 23: Exporting Your AAA Foundation</h1>
+<h2 id="goal">Goal</h2>
+<p>The goal of this chapter is to guide you through the process of <strong>exporting your Godot project</strong>, preparing your AAA foundation for distribution to various platforms. We will cover configuring export presets, understanding build options, asset packaging, and platform-specific considerations. Successfully exporting your game is the final step in making your project playable by others, and a key part of any professional game development pipeline.</p>
+<h2 id="concept-explanation-exporting-a-game">Concept Explanation: Exporting a Game</h2>
+<p>Exporting a game means compiling and packaging your project (code, scenes, assets, data) into a standalone executable or package that can be run on target platforms (Windows, macOS, Linux, Android, iOS, Web, etc.). This process transforms your development project into a shippable product.</p>
+<h3 id="why-exporting-is-more-than-just-copying-files">Why Exporting is More Than Just "Copying Files":</h3>
+<ul>
+<li><strong>Runtime Environment</strong>: The exported game includes a stripped-down Godot engine executable, optimized for runtime.</li>
+<li><strong>Asset Packaging</strong>: All your <code>res://</code> assets are bundled into a single <code>.pck</code> (or <code>.zip</code>) file, which is efficient and protects your game's content.</li>
+<li><strong>Platform-Specific Optimizations</strong>: Export templates are tailored for each platform, often including specific drivers, libraries, or configurations.</li>
+<li><strong>Security/Protection</strong>: Packaging assets makes it harder (though not impossible) for users to easily browse or modify your game's raw files.</li>
+<li><strong>Modding Implications</strong>: We need to understand how exported games handle external files (like our JSON mod data in <code>user://</code>).</li>
+</ul>
+<h2 id="architectural-reasoning-production-builds">Architectural Reasoning: Production Builds</h2>
+<p>From an architectural perspective, exporting involves creating a "production build" of your game. This build should be:</p>
+<ul>
+<li><strong>Optimized</strong>: Debug features (like our <code>Logger</code>'s <code>DEBUG</code> level) should be configurable to be disabled or removed.</li>
+<li><strong>Self-Contained</strong>: All necessary files should be bundled.</li>
+<li><strong>Platform-Specific</strong>: The build must run correctly on its target platform.</li>
+</ul>
+<p>Our <code>DataManager</code>'s ability to load from <code>user://</code> is especially important here. An exported game will still look for <code>user://</code> files in the correct persistent data location on the player's system, allowing modders to simply drop their mod files there.</p>
+<h2 id="production-mindset-notes-release-checklist">Production Mindset Notes: Release Checklist</h2>
+<p>Before exporting a final release build, consider these points:</p>
+<ul>
+<li><strong>Testing</strong>: Thoroughly test the exported build on the target platform(s), not just in the editor.</li>
+<li><strong>Performance</strong>: Ensure the game runs smoothly on target hardware. Use the profiler on exported builds.</li>
+<li><strong>Localization</strong>: Verify all languages work correctly.</li>
+<li><strong>Bug Fixing</strong>: Address all known critical bugs.</li>
+<li><strong>Configuration</strong>: Set appropriate <code>Project Settings</code> for the target (e.g., full screen, resolution, V-sync).</li>
+<li><strong>Branding</strong>: Include your game's icon, splash screen, and necessary legal information.</li>
+<li><strong>Documentation</strong>: Provide instructions for players, especially regarding modding if supported.</li>
+<li><strong>Version Control</strong>: Tag your Git repository with the release version (e.g., <code>v1.0.0</code>) so you can always go back to that exact state.</li>
+</ul>
+<h2 id="step-by-step-instructions-configuring-and-exporting-your-godot-project">Step-by-Step Instructions: Configuring and Exporting Your Godot Project</h2>
+<h3 id="1-download-export-templates">1. Download Export Templates</h3>
+<p>Godot requires "export templates" for each platform.</p>
+<ol>
+<li>In the Godot editor, go to <code>Project</code> -&gt; <code>Install Android Build Template</code> (if targeting Android) or <code>Project</code> -&gt; <code>Export</code> (if not targeting Android, this opens the Export dialog).</li>
+<li>In the "Export" dialog, click "Manage Export Templates...".</li>
+<li>Click "Download and Install". Godot will download the official templates. This might take a few minutes.</li>
+<li>Once installed, close the "Manage Export Templates" dialog.</li>
+</ol>
+<h3 id="2-configure-export-presets">2. Configure Export Presets</h3>
+<p>We'll set up a preset for Windows, but the process is similar for other platforms.</p>
+<ol>
+<li>In the "Export" dialog, click "Add..." and choose "Windows Desktop".</li>
+<li><strong>Rename</strong>: You can rename the preset (e.g., "Windows Release").</li>
+<li>
+<p><strong>Required Settings</strong>:</p>
+<ul>
+<li><strong><code>Export Presets</code> -&gt; <code>Windows</code></strong>:<ul>
+<li><code>Custom Template</code>: Leave empty unless you have custom engine builds.</li>
+<li><code>Binary</code>: Leave empty.</li>
+</ul>
+</li>
+<li><strong><code>Resources</code></strong>:<ul>
+<li><code>Export Mode</code>:<ul>
+<li><code>Export all resources in the project</code>: Default, packages everything.</li>
+<li><code>Export selected scenes (and their dependencies)</code>: For smaller, more targeted builds.</li>
+<li><code>Export selected resources (and their dependencies)</code>: Similar, for specific assets.</li>
+<li>We will stick with <code>Export all resources in the project</code> for now.</li>
+</ul>
+</li>
+<li><code>Export With Debug</code>: <strong>Uncheck this for release builds!</strong> This disables editor features, debug symbols, and <code>_debug_</code> methods, making the build smaller and faster.</li>
+<li><code>Embed Pck</code>: Check this to embed the <code>.pck</code> file directly into the executable, resulting in a single <code>.exe</code> file. Uncheck if you want a separate <code>.pck</code> (e.g., for easier modding if mods replace the entire <code>.pck</code>). For our modding, a separate <code>.pck</code> can be easier to manage, but an embedded one is simpler for distribution. Let's keep it embedded for simplicity.</li>
+<li><code>Exclude Files</code>: Use patterns to exclude files (e.g., <code>*.gdignore</code>, <code>tests/*</code>, <code>temp/*</code>).<ul>
+<li>Add <code>tests/*</code> to <code>Exclude Files</code> to ensure our test scripts are not bundled in the final game.</li>
+<li>Add <code>temp/*</code> to exclude temporary files.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><code>Application</code></strong>:<ul>
+<li><code>Icon</code>: Click the folder icon and select your game's icon (e.g., <code>res://icon.svg</code>).</li>
+<li><code>Name</code>: This is the name that appears in the taskbar/process list.</li>
+<li><code>Product Name</code>: Name used by the OS for various purposes.</li>
+<li><code>Copyright/Company/Description/Version</code>: Fill these out for professional builds.</li>
+</ul>
+</li>
+<li><strong><code>Boot Splash</code></strong>:<ul>
+<li><code>Image</code>: You can set a custom splash image that appears while your game loads.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Other Platforms</strong>: Repeat this process for other platforms you target (e.g., <code>Linux/X11</code>, <code>macOS</code>, <code>Web</code>). Each platform will have its own specific settings (e.g., <code>Architecture</code> for macOS, <code>User Permissions</code> for Android).</p>
+</li>
+</ol>
+<h3 id="3-configure-logger-for-exported-builds">3. Configure <code>Logger</code> for Exported Builds</h3>
+<p>For release builds, we typically want to limit logging to <code>WARNING</code> or <code>ERROR</code> level, and ensure file logging is active.</p>
+<ol>
+<li>Go to <code>Project</code> -&gt; <code>Project Settings...</code> -&gt; "AutoLoad" tab.</li>
+<li>Select the <code>Logger</code> entry.</li>
+<li>In the Inspector (which appears when <code>Logger</code> is selected in AutoLoad), find the "Export Presets" section.</li>
+<li>Click "Add" and select "Windows Release" (or whatever you named your export preset).</li>
+<li>Now, under "Windows Release overrides", you can set specific values for <code>Logger</code>'s <code>@export</code> variables <em>only for this export preset</em>:<ul>
+<li>Set <code>Current Log Level</code> to <code>LogLevel.WARNING</code>.</li>
+<li>Ensure <code>Enable File Logging</code> is <code>true</code>.</li>
+</ul>
+</li>
+<li>This ensures that when you export using the "Windows Release" preset, your logger will automatically switch to a less verbose mode.</li>
+</ol>
+<h3 id="4-perform-the-export">4. Perform the Export</h3>
+<ol>
+<li>In the "Export" dialog, select your "Windows Release" preset.</li>
+<li>Click "Export Project...".</li>
+<li>Choose a destination folder for your exported game (e.g., <code>res://build/Windows/</code>).</li>
+<li>Specify the executable name (e.g., <code>AAA_Blueprint_Course.exe</code>).</li>
+<li>Click "Save".</li>
+</ol>
+<p>Godot will now package your game. This might take some time depending on your project size.</p>
+<h3 id="5-test-the-exported-game">5. Test the Exported Game</h3>
+<ol>
+<li>Navigate to the folder where you exported your game (e.g., <code>res://build/Windows/</code>).</li>
+<li>Run the executable (e.g., <code>AAA_Blueprint_Course.exe</code>).</li>
+<li><strong>Verify Functionality</strong>:<ul>
+<li>Does the game launch?</li>
+<li>Does the Main Menu appear?</li>
+<li>Can you play the game (move, take damage, switch skins)?</li>
+<li>Check the log file: Go to the <code>user://</code> directory for your exported game. You should find <code>game.log</code> (or whatever you named it). Open it and verify that only <code>WARNING</code> and <code>ERROR</code> messages (and <code>INFO</code> from <code>GameContext</code>/<code>DataManager</code> if you didn't change them) are present, not <code>DEBUG</code> messages.</li>
+</ul>
+</li>
+<li><strong>Test Modding (if applicable)</strong>:<ul>
+<li>Copy your <code>user://mods/my_first_mod/</code> folder (from Chapter 17) into the <code>user://</code> data folder of your <em>exported game</em>.</li>
+<li>Run the exported game again.</li>
+<li>Verify that modded items and overridden data are loaded (check logs).</li>
+</ul>
+</li>
+</ol>
+<h2 id="consistency-check">Consistency Check</h2>
+<p>You have successfully configured export presets and exported your Godot project for a target platform. You've learned about essential build options, including disabling debug features and excluding test files. Crucially, you've seen how to configure your <code>Logger</code> for release builds and understand how mod data in <code>user://</code> will persist across exported versions. This chapter completes the process of taking your AAA architectural foundation from development to a shippable product.</p>
+<p>In the final chapter, we will summarize the key learnings of this course and provide guidance for your continued growth as a game developer, looking beyond this foundation.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "content.code.copy"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1320 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../02-chapter-2/">
+      
+      
+        <link rel="next" href="../04-chapter-4/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Chapter 3 - The AAA Blueprint: Godot Project Foundation for Scalability & Modding</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="sky" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-3-version-control-with-git-godot" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="The AAA Blueprint: Godot Project Foundation for Scalability &amp; Modding" class="md-header__button md-logo" aria-label="The AAA Blueprint: Godot Project Foundation for Scalability & Modding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The AAA Blueprint: Godot Project Foundation for Scalability & Modding
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 3
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="The AAA Blueprint: Godot Project Foundation for Scalability &amp; Modding" class="md-nav__button md-logo" aria-label="The AAA Blueprint: Godot Project Foundation for Scalability & Modding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    The AAA Blueprint: Godot Project Foundation for Scalability & Modding
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-chapter-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-chapter-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-explanation-what-is-version-control-and-why-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Explanation: What is Version Control and Why Git?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept Explanation: What is Version Control and Why Git?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-git-is-essential-for-a-aaa-mindset-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Git is Essential for a AAA Mindset Project:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectural-reasoning-ignoring-godot-specific-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architectural Reasoning: Ignoring Godot-Specific Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-mindset-notes-git-workflow-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production Mindset Notes: Git Workflow Basics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-instructions-setting-up-git-for-your-godot-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step-by-Step Instructions: Setting up Git for Your Godot Project
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Instructions: Setting up Git for Your Godot Project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-initialize-a-git-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Initialize a Git Repository
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-and-configure-the-gitignore-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Create and Configure the .gitignore File
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-chapter-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-chapter-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-chapter-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-chapter-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-chapter-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-chapter-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-chapter-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-chapter-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-chapter-12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-chapter-13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-chapter-14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-chapter-15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-chapter-16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-chapter-17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-chapter-18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 18
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-chapter-19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 19
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-chapter-20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 20
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-chapter-21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 21
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-chapter-22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 22
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-chapter-23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 23
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-explanation-what-is-version-control-and-why-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Explanation: What is Version Control and Why Git?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept Explanation: What is Version Control and Why Git?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-git-is-essential-for-a-aaa-mindset-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Git is Essential for a AAA Mindset Project:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectural-reasoning-ignoring-godot-specific-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architectural Reasoning: Ignoring Godot-Specific Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-mindset-notes-git-workflow-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production Mindset Notes: Git Workflow Basics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-instructions-setting-up-git-for-your-godot-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step-by-Step Instructions: Setting up Git for Your Godot Project
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Instructions: Setting up Git for Your Godot Project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-initialize-a-git-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Initialize a Git Repository
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-and-configure-the-gitignore-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Create and Configure the .gitignore File
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-3-version-control-with-git-godot">Chapter 3: Version Control with Git &amp; Godot</h1>
+<h2 id="goal">Goal</h2>
+<p>The goal of this chapter is to integrate Git into our Godot project workflow. Version control is an indispensable tool in professional game development, offering robust history tracking, collaborative capabilities, and a safety net for your entire project. We will configure Git specifically for Godot projects, ensuring that unnecessary files are ignored and only relevant changes are tracked.</p>
+<h2 id="concept-explanation-what-is-version-control-and-why-git">Concept Explanation: What is Version Control and Why Git?</h2>
+<p><strong>Version Control Systems (VCS)</strong> are software tools that help a team of software developers manage changes to source code over time. While primarily for code, they are incredibly useful for <em>any</em> type of file, including game assets.</p>
+<p>Imagine you're working on a document. You save different versions: <code>document_v1.docx</code>, <code>document_v2_final.docx</code>, <code>document_v3_final_final.docx</code>. This quickly becomes messy and unmanageable. A VCS solves this by:</p>
+<ul>
+<li><strong>Tracking Changes</strong>: Records every modification made to your files, who made it, and when.</li>
+<li><strong>History</strong>: Allows you to look back at any point in your project's history, compare changes, and revert to previous versions if needed.</li>
+<li><strong>Collaboration</strong>: Enables multiple people to work on the same project simultaneously without overwriting each other's work, providing tools to merge changes.</li>
+<li><strong>Backup</strong>: Your project's history is stored on a remote server (like GitHub, GitLab, Bitbucket), acting as an off-site backup.</li>
+</ul>
+<p><strong>Git</strong> is the most widely used modern VCS. It's a distributed VCS, meaning every developer has a complete copy of the repository, making it robust and efficient. While there are other VCS options, Git has become the industry standard due to its flexibility, speed, and widespread tooling support.</p>
+<h3 id="why-git-is-essential-for-a-aaa-mindset-project">Why Git is Essential for a AAA Mindset Project:</h3>
+<ul>
+<li><strong>Safety Net</strong>: Accidental deletions or corruptions are no longer catastrophic; you can always revert.</li>
+<li><strong>Teamwork</strong>: Essential for multiple developers to work on the same Godot project without constant communication about file locking.</li>
+<li><strong>Experimentation</strong>: Allows you to create separate "branches" to experiment with new features without affecting the main project, merging them back only when ready.</li>
+<li><strong>Auditing</strong>: Provides a clear history of who changed what, which is invaluable for debugging and accountability.</li>
+</ul>
+<h2 id="architectural-reasoning-ignoring-godot-specific-files">Architectural Reasoning: Ignoring Godot-Specific Files</h2>
+<p>Godot projects generate several temporary or user-specific files that should <strong>not</strong> be tracked by Git. These files are either:</p>
+<ul>
+<li><strong>Machine-specific</strong>: Contain paths or settings unique to your local machine.</li>
+<li><strong>Automatically generated</strong>: Can be regenerated by Godot from other files (e.g., <code>.import</code> files).</li>
+<li><strong>Temporary</strong>: Cache files or build artifacts.</li>
+</ul>
+<p>Tracking these files causes several problems:</p>
+<ul>
+<li><strong>Merge Conflicts</strong>: They frequently change, leading to unnecessary conflicts when merging branches.</li>
+<li><strong>Repository Bloat</strong>: They can be large and change often, unnecessarily increasing the size of your repository.</li>
+<li><strong>Inconsistency</strong>: Different team members might have different local settings, leading to "noise" in the commit history.</li>
+</ul>
+<p>The solution is a <code>.gitignore</code> file, which tells Git which files and directories to intentionally ignore.</p>
+<h2 id="production-mindset-notes-git-workflow-basics">Production Mindset Notes: Git Workflow Basics</h2>
+<p>A typical Git workflow involves these steps:</p>
+<ol>
+<li><strong>Initialize Repository</strong>: Start Git tracking for your project.</li>
+<li><strong>Make Changes</strong>: Work on your code, scenes, and assets.</li>
+<li><strong>Stage Changes</strong>: Select the specific changes you want to include in your next commit.</li>
+<li><strong>Commit Changes</strong>: Record the staged changes to your local history with a descriptive message.</li>
+<li><strong>Push Changes</strong>: Upload your local commits to a remote repository (e.g., GitHub) to share them with your team and create a backup.</li>
+<li><strong>Pull Changes</strong>: Download updates from the remote repository that other team members have pushed.</li>
+</ol>
+<p>For this chapter, we'll focus on initializing and setting up the <code>.gitignore</code> locally. Subsequent chapters will implicitly encourage committing your work.</p>
+<h2 id="step-by-step-instructions-setting-up-git-for-your-godot-project">Step-by-Step Instructions: Setting up Git for Your Godot Project</h2>
+<p>We'll assume you have Git installed on your system. If not, please install it from <a href="https://git-scm.com/">git-scm.com</a>.</p>
+<h3 id="1-initialize-a-git-repository">1. Initialize a Git Repository</h3>
+<ol>
+<li><strong>Open your project in a Terminal/Command Prompt</strong>: Navigate to your <code>AAA_Blueprint_Course</code> project root directory using your system's terminal or command prompt.<ul>
+<li><em>Tip for Godot</em>: You can often right-click <code>res://</code> in the FileSystem dock and choose "Open in File Manager" to quickly get to your project root.</li>
+</ul>
+</li>
+<li><strong>Initialize Git</strong>: Type the following command and press Enter:
+    <code>bash
+    git init</code>
+    You should see a message like <code>Initialized empty Git repository in /path/to/your/project/.git/</code>. This creates a hidden <code>.git</code> folder in your project, which is where Git stores all its tracking information.</li>
+</ol>
+<h3 id="2-create-and-configure-the-gitignore-file">2. Create and Configure the <code>.gitignore</code> File</h3>
+<p>Now, let's create a <code>.gitignore</code> file specifically tailored for Godot projects.</p>
+<ol>
+<li><strong>Create <code>.gitignore</code></strong>: In your project's root directory (the same place where the <code>.git</code> folder was created), create a new file named <code>.gitignore</code>. Make sure it's exactly <code>.gitignore</code> (with the leading dot and no file extension). You can do this from your terminal or a text editor.<ul>
+<li><em>Using Terminal (Linux/macOS)</em>: <code>touch .gitignore</code></li>
+<li><em>Using Terminal (Windows)</em>: <code>type NUL &gt; .gitignore</code></li>
+<li><em>Using Godot</em>: You can technically create a new script, save it as <code>.gitignore</code> in the root, and then delete its contents, but it's often easier directly in your OS file explorer or terminal.</li>
+</ul>
+</li>
+<li>
+<p><strong>Add Godot-Specific Ignore Rules</strong>: Open the <code>.gitignore</code> file with a text editor and paste the following content. This is a common and robust <code>.gitignore</code> for Godot 4 projects.</p>
+<p>```gitignore</p>
+<h1 id="godot-specific-ignores">Godot-specific ignores</h1>
+<p>.godot/
+<em>.import
+</em>.translation</p>
+<h1 id="user-specific-settings">User-specific settings</h1>
+<p>.vscode/
+.idea/</p>
+<h1 id="build-artifacts-and-caches">Build artifacts and caches</h1>
+<p>export/
+build/
+<em>.exe
+</em>.zip
+<em>.pck
+</em>.apk</p>
+<h1 id="os-generated-files">OS generated files</h1>
+<p>.DS_Store
+.directory
+Thumbs.db</p>
+<h1 id="optional-ignore-all-asset-import-meta-files-if-you-regenerate-them-on-build">Optional: Ignore all asset import meta files (if you regenerate them on build)</h1>
+<h1 id="this-is-generally-not-recommended-for-teams-as-it-can-lead-to-conflicts">This is generally NOT recommended for teams as it can lead to conflicts,</h1>
+<h1 id="but-some-solo-developers-prefer-it-leave-commented-out-unless-you-know-why">but some solo developers prefer it. Leave commented out unless you know why.</h1>
+<h1 id="import">*.import</h1>
+<p>```</p>
+<ul>
+<li><strong><code>.godot/</code></strong>: This directory contains Godot's internal cache, build files, and editor settings. It's automatically regenerated and should never be committed.</li>
+<li><strong><code>*.import</code></strong>: These are meta-files generated by Godot for every imported asset. While sometimes useful to track for consistency across machines, they frequently cause merge conflicts. For simpler projects or solo developers, ignoring them can reduce friction. For larger teams, you might consider tracking them and being diligent about merging. For this course, we'll ignore them to keep things simple.</li>
+<li><strong><code>*.translation</code></strong>: Generated translation files.</li>
+<li><strong>Other ignores</strong>: Common IDE folders (<code>.vscode/</code>, <code>.idea/</code>), build output (<code>export/</code>, <code>build/</code>, executables, packages), and OS-specific files (<code>.DS_Store</code>, <code>Thumbs.db</code>).</li>
+</ul>
+</li>
+<li>
+<p><strong>Save the <code>.gitignore</code> file</strong>.</p>
+</li>
+</ol>
+<h3 id="3-make-your-initial-commit">3. Make Your Initial Commit</h3>
+<p>Now that Git is initialized and configured to ignore unwanted files, let's make our first commit.</p>
+<ol>
+<li><strong>Stage all project files</strong>: In your terminal, type:
+    <code>bash
+    git add .</code>
+    The <code>.</code> tells Git to stage all changes in the current directory (your project root). Git will automatically respect the <code>.gitignore</code> file and only stage the relevant files.</li>
+<li><strong>Commit the staged files</strong>: Now, commit these changes with a descriptive message:
+    <code>bash
+    git commit -m "Initial project setup with Godot 4.5 and core folder structure"</code>
+    You should see output indicating that many files (your <code>Main.tscn</code>, <code>project.godot</code>, and all the folders you created) have been added to the repository.</li>
+</ol>
+<h3 id="4-verify-ignored-files">4. Verify Ignored Files</h3>
+<p>To confirm that <code>.godot/</code> and other ignored files are not being tracked:</p>
+<ol>
+<li>Create a temporary file inside the <code>.godot/</code> folder (e.g., <code>touch .godot/temp.txt</code>).</li>
+<li>Run <code>git status</code> in your terminal. You should <em>not</em> see <code>temp.txt</code> listed as an untracked file.</li>
+<li>If you <em>do</em> see it, double-check your <code>.gitignore</code> file for typos.</li>
+</ol>
+<h2 id="consistency-check">Consistency Check</h2>
+<p>You now have a Godot project under version control, with a <code>.gitignore</code> file configured to prevent unnecessary files from cluttering your repository. This is a crucial step towards a professional, maintainable, and collaborative project. From this point forward, remember to regularly <code>git add .</code> and <code>git commit -m "Your descriptive message"</code> as you make significant changes.</p>
+<p>In the next chapter, we'll dive into Godot's fundamental building block: the Node, and explore how to effectively use Node composition.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "content.code.copy"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
